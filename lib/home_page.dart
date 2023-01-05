@@ -18,11 +18,24 @@ class HomePage extends StatelessWidget {
           ));
         },
       ),
-      floatingActionButton: FloatingActionButton(
-        child: const Icon(Icons.plus_one),
-        onPressed: () {
-          context.read<CounterCubit>().decrement();
-        },
+      floatingActionButton: Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          FloatingActionButton(
+              child: const Icon(Icons.add),
+              onPressed: () {
+                context.read<CounterCubit>().increment();
+              }),
+          const SizedBox(
+            height: 3,
+          ),
+          FloatingActionButton(
+            onPressed: (() {
+              context.read<CounterCubit>().decrement();
+            }),
+            child: const Icon(Icons.remove),
+          ),
+        ],
       ),
     );
   }
